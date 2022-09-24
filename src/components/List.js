@@ -1,7 +1,7 @@
 import React from "react";
 import ListItem from "./ListItem";
 
-const List = ({ notes, checkHandler, deleteHandler }) => {
+const List = ({ notes, checkHandler, deleteHandler, editHandler }) => {
   return (
     <section>
       {notes.length ? (
@@ -12,6 +12,7 @@ const List = ({ notes, checkHandler, deleteHandler }) => {
               key={note.id}
               checkHandler={checkHandler}
               deleteHandler={deleteHandler}
+              editHandler={editHandler}
             />
           ))}
         </ul>
