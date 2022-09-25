@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -7,27 +7,28 @@ import Search from "./components/Search";
 import "./App.css";
 
 function App() {
-  const [notes, setNotes] = useState(JSON.parse(localStorage.getItem("notes")));
+  const [notes, setNotes] = useState(
+    JSON.parse(localStorage.getItem("notes")) || []
+  );
   const [value, setValue] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [editNoteId, setEditNoteId] = useState("");
 
-  const setAndSaveItems = (items) => {
-    setNotes(items);
-    localStorage.setItem("notes", JSON.stringify(items));
-  };
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   const checkHandler = (id) => {
     const newNotes = notes.map((note) =>
       note.id === id ? { ...note, isChecked: !note.isChecked } : note
     );
-    setAndSaveItems(newNotes);
+    setNotes(newNotes);
   };
 
   const deleteHandler = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
-    setAndSaveItems(newNotes);
+    setNotes(newNotes);
   };
 
   const submitHandler = (e) => {
@@ -40,7 +41,7 @@ function App() {
           return note;
         }
       });
-      setAndSaveItems(updatedNotes);
+      setNotes(updatedNotes);
       setValue("");
       setIsEdit(false);
     } else {
@@ -51,7 +52,7 @@ function App() {
       };
       if (value) {
         const newNotes = [...notes, note];
-        setAndSaveItems(newNotes);
+        setNotes(newNotes);
         setValue("");
       } else {
         return;

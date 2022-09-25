@@ -10,7 +10,9 @@ const ListItem = ({ note, checkHandler, deleteHandler, editHandler }) => {
         checked={isChecked}
         onChange={() => checkHandler(id)}
       />
-      <label>{title}</label>
+      <label style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        {title}
+      </label>
       <FaTrashAlt onClick={() => deleteHandler(id)} />
       <FaPencilAlt onClick={() => editHandler(id)} />
     </li>
