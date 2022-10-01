@@ -3,7 +3,13 @@ import React from "react";
 const Header = ({ title }) => {
   return (
     <header>
-      <h1>{title}</h1>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <section className="container">
+          <a class="navbar-brand" href="#">
+            {title}
+          </a>
+        </section>
+      </nav>
     </header>
   );
 };

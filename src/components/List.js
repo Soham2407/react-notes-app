@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 
 const List = ({ notes, checkHandler, deleteHandler, editHandler }) => {
   return (
-    <section>
+    <section className="mt-4 items-section">
       {notes.length ? (
         <ul>
           {notes.map((note) => (

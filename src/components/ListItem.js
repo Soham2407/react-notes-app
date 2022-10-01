@@ -4,17 +4,24 @@ import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 const ListItem = ({ note, checkHandler, deleteHandler, editHandler }) => {
   const { id, title, isChecked } = note;
   return (
-    <li>
+    <li className="ml-4 list-item">
       <input
         type="checkbox"
+        class="form-check-input"
         checked={isChecked}
         onChange={() => checkHandler(id)}
       />
-      <label style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+      <label
+        className="ml-3 list-item-label"
+        style={{ textDecoration: isChecked ? "line-through" : "none" }}
+      >
         {title}
       </label>
-      <FaTrashAlt onClick={() => deleteHandler(id)} />
-      <FaPencilAlt onClick={() => editHandler(id)} />
+      <FaTrashAlt
+        className="delete-btn mr-3"
+        onClick={() => deleteHandler(id)}
+      />
+      <FaPencilAlt className="edit-btn" onClick={() => editHandler(id)} />
     </li>
   );
 };

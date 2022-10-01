@@ -8,9 +8,12 @@ const NotesForm = ({ value, setValue, submitHandler, isEdit }) => {
         placeholder="Enter Note"
         value={value}
         required
+        className="p-1 w-50"
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit">{isEdit ? "Edit" : "Add"}</button>
+      <button type="submit" className="btn btn-primary mb-1">
+        {isEdit ? "Edit" : "Add"}
+      </button>
     </form>
   );
 };

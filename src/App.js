@@ -68,28 +68,30 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Header title="Notes App" />
-      <NotesForm
-        value={value}
-        setValue={setValue}
-        submitHandler={submitHandler}
-        isEdit={isEdit}
-      />
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <Content
-        notes={notes.filter((note) =>
-          note.title.toLowerCase().includes(searchTerm.toLowerCase())
-        )}
-        setValue={setValue}
-        value={value}
-        checkHandler={checkHandler}
-        deleteHandler={deleteHandler}
-        submitHandler={submitHandler}
-        editHandler={editHandler}
-      />
+      <main className="container mt-4">
+        <NotesForm
+          value={value}
+          setValue={setValue}
+          submitHandler={submitHandler}
+          isEdit={isEdit}
+        />
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Content
+          notes={notes.filter((note) =>
+            note.title.toLowerCase().includes(searchTerm.toLowerCase())
+          )}
+          setValue={setValue}
+          value={value}
+          checkHandler={checkHandler}
+          deleteHandler={deleteHandler}
+          submitHandler={submitHandler}
+          editHandler={editHandler}
+        />
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
