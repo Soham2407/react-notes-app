@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  width: 100%;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -15,7 +19,8 @@ li {
 }
 
 .search {
-  width: 40%;
+  min-width: 18rem;
+  max-width: 22rem;
 }
 
 .form-check-input[type="checkbox"] {
@@ -46,4 +51,9 @@ li {
 
 .items-section {
   width: 80%;
+}
+
+.add-items {
+  min-width: 360px;
+  max-width: 450px;
 }
